@@ -6,7 +6,7 @@ function checkLuhn(numbers) {
           .map(Number);
 //double the value of every 2nd digit
   const doubleEvenIndices = reverseNumbers.map(function (num, index){
-    if((index) % 2 !== 0){
+    if((index-1) % 2 !== 0){
       return num;
     }
     if (num * 2 > 9){
@@ -24,13 +24,10 @@ function checkLuhn(numbers) {
   var sum = doubleEvenIndices.reduce((acc, num) => acc+num, 0);
 
 
-
-
-
-  return !((sum + (sum*9)%10)%10);
+  return !(sum%10);
 }
 
 module.exports = checkLuhn;
 
 
-console.log(checkLuhn("7992739871"));
+console.log(checkLuhn("79927398713"));
